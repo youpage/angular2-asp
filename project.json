@@ -1,12 +1,20 @@
 {
   "dependencies": {
     "Microsoft.NETCore.App": {
-      "version": "1.0.0-rc2-3002702",
+      "version": "1.0.0-rc2-*",
       "type": "platform"
     },
+    "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0-rc2-final",
     "Microsoft.AspNetCore.Mvc": "1.0.0-rc2-final",
     "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0-rc2-final",
     "Microsoft.AspNetCore.Server.Kestrel": "1.0.0-rc2-final",
+    "Microsoft.AspNetCore.StaticFiles": "1.0.0-rc2-final",
+    "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "1.0.0-rc2-final",
+    "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.0.0-rc2-final",
+    "Microsoft.EntityFrameworkCore.InMemory": "1.0.0-rc2-final",
+    "Microsoft.EntityFrameworkCore.SqlServer": "1.0.0-rc2-final",
+    "Microsoft.AspNetCore.Mvc.Formatters.Json": "1.0.0-rc2-final",
+    "Newtonsoft.Json": "8.0.4-*",    
     "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0-rc2-final",
     "Microsoft.Extensions.Configuration.FileExtensions": "1.0.0-rc2-final",
     "Microsoft.Extensions.Configuration.Json": "1.0.0-rc2-final",
@@ -22,7 +30,7 @@
     }
   },
 
-  "frameworks": {
+  "frameworks": {    
     "netcoreapp1.0": {
       "imports": [
         "dotnet5.6",
