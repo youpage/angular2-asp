@@ -36,8 +36,7 @@ namespace angular2_asp
             services.AddSingleton<CustomerRepository>();
             services.AddSingleton<OrderRepository>();
             services.AddSingleton<ProductRepository>();
-            services.AddSingleton<OrderDetailRepository>();
-            services.AddSingleton<ITodoRepository, TodoRepository>();
+            services.AddSingleton<OrderDetailRepository>();            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
