@@ -5,13 +5,15 @@ namespace angular2_asp.Models
 {
     public class ProductRepository : IApiRepository<Product>
     {
-        private readonly ApiContext _dbContext; 
-        public ProductRepository(ApiContext dbContext){
+        private readonly ApiContext _dbContext;
+        public ProductRepository(ApiContext dbContext)
+        {
             _dbContext = dbContext;
         }
         public Product Add(Product item)
         {
-            using(_dbContext){
+            using (_dbContext)
+            {
                 _dbContext.Products.Add(item);
 
                 if (_dbContext.SaveChanges() > 0)
@@ -19,7 +21,7 @@ namespace angular2_asp.Models
                     return item;
                 }
                 return null;
-           }
+            }
         }
 
         public Product Find(string key)
@@ -34,8 +36,9 @@ namespace angular2_asp.Models
 
         public bool Remove(string key)
         {
-            using(_dbContext){
-                var item = Find(key);            
+            using (_dbContext)
+            {
+                var item = Find(key);
                 if (item != null)
                 {
                     _dbContext.Products.Remove(item);
@@ -45,14 +48,21 @@ namespace angular2_asp.Models
             }
         }
 
-        public void Update(Product item)
+        public Product Update(Product item)
         {
-            using(_dbContext){
+            using (_dbContext)
+            {
                 var _item = Find(item.ProductID.ToString());
-                if(_item != null){
-                    _item = item;             
-                    _dbContext.SaveChanges();
+                if (_item != null)
+                {
+                    _item = item;
+                    if (_dbContext.SaveChanges() > 0)
+                    {
+                        return item;
+                    }
+                    return null;
                 }
+                return null;
             }
         }
     }

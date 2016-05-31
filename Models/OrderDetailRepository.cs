@@ -5,13 +5,15 @@ namespace angular2_asp.Models
 {
     public class OrderDetailRepository : IApiRepository<OrderDetail>
     {
-        private readonly ApiContext _dbContext; 
-        public OrderDetailRepository(ApiContext dbContext){
+        private readonly ApiContext _dbContext;
+        public OrderDetailRepository(ApiContext dbContext)
+        {
             _dbContext = dbContext;
         }
         public OrderDetail Add(OrderDetail item)
         {
-            using(_dbContext){
+            using (_dbContext)
+            {
                 _dbContext.OrderDetails.Add(item);
 
                 if (_dbContext.SaveChanges() > 0)
@@ -19,26 +21,28 @@ namespace angular2_asp.Models
                     return item;
                 }
                 return null;
-           }
+            }
         }
 
         public OrderDetail Find(string key)
         {
-            var item = _dbContext.OrderDetails.FirstOrDefault(c => c.OrderID.ToString() == key);            
+            var item = _dbContext.OrderDetails.FirstOrDefault(c => c.OrderID.ToString() == key);
             return item;
         }
         public IEnumerable<OrderDetail> FindAll(string key)
-        {            
+        {
             IEnumerable<OrderDetail> items = _dbContext.OrderDetails
                         .Where(o => o.OrderID.ToString() == key)
-                        .Select((o) => new {o, o.Product}).AsEnumerable()
-                        .Select(o => new OrderDetail{
-                                OrderID = o.o.OrderID,
-                                ProductID = o.o.ProductID,
-                                Quantity = o.o.Quantity,
-                                Discount = o.o.Discount,
-                                Product = o.Product });
-                 
+                        .Select((o) => new { o, o.Product }).AsEnumerable()
+                        .Select(o => new OrderDetail
+                        {
+                            OrderID = o.o.OrderID,
+                            ProductID = o.o.ProductID,
+                            Quantity = o.o.Quantity,
+                            Discount = o.o.Discount,
+                            Product = o.Product
+                        });
+
             return items;
         }
 
@@ -49,8 +53,9 @@ namespace angular2_asp.Models
 
         public bool Remove(string key)
         {
-            using(_dbContext){
-                var item = Find(key);            
+            using (_dbContext)
+            {
+                var item = Find(key);
                 if (item != null)
                 {
                     _dbContext.OrderDetails.Remove(item);
@@ -60,14 +65,21 @@ namespace angular2_asp.Models
             }
         }
 
-        public void Update(OrderDetail item)
+        public OrderDetail Update(OrderDetail item)
         {
-            using(_dbContext){
+            using (_dbContext)
+            {
                 var _item = Find(item.OrderID.ToString());
-                if(_item != null){
-                    _item = item;             
-                    _dbContext.SaveChanges();
+                if (_item != null)
+                {
+                    _item = item;
+                    if (_dbContext.SaveChanges() > 0)
+                    {
+                        return item;
+                    }
+                    return null;
                 }
+                return null;
             }
         }
     }
