@@ -1,0 +1,13 @@
+<div *ngIf="customer">
+    <div class="row">
+        <div class="col-md-11">
+            <h4>{{ customer.contactName | capitalize }} - {{ customer.companyName | capitalize }}&nbsp;</h4>
+            <br /> {{ customer.address }}
+            <br /> {{ customer.city }}, {{ customer.country }}
+            <br /> {{ customer.phone }}
+        </div>
+    </div>
+</div>
+<div *ngIf="!customer" class="row">
+    No customer found
+</div>

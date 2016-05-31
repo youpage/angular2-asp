@@ -1,0 +1,42 @@
+<div>
+  <form (ngSubmit)="onSubmit()" #customerForm="ngForm" class="editForm">
+      
+    <div class="form-group">
+      <label>Company Name</label>
+      <input type="text" class="form-control" ngControl="companyName" #companyName="ngForm" [(ngModel)]="customer.companyName" required>
+      <div class="alert alert-danger" [hidden]="companyName.valid">Company Name is required</div>
+    </div>
+    <div class="form-group">
+      <label>Contact Name</label>
+      <input type="text" class="form-control" ngControl="contactName" #contactName="ngForm" [(ngModel)]="customer.contactName" required>
+      <div class="alert alert-danger" [hidden]="contactName.valid">Contact Name is required</div>
+    </div>
+    <div class="form-group">
+      <label>Address</label>
+      <input type="text" class="form-control" ngControl="address" #address="ngForm" [(ngModel)]="customer.address" required>
+      <div class="alert alert-danger" [hidden]="address.valid">Address is required</div>
+    </div>
+    <div class="form-group">
+      <label>City</label>
+      <input type="text" class="form-control" ngControl="city" #city="ngForm" [(ngModel)]="customer.city" required>
+      <div class="alert alert-danger" [hidden]="city.valid">City is required</div>
+    </div>
+    <div class="form-group">
+      <label>Postal Code</label>
+      <input type="text" class="form-control" ngControl="postalCode" #postalCode="ngForm" [(ngModel)]="customer.postalCode">
+    </div>
+    <div class="form-group">
+      <label>Country</label>
+      <input type="text" class="form-control" ngControl="country" #country="ngForm" [(ngModel)]="customer.country" required>
+      <div class="alert alert-danger" [hidden]="country.valid">Country is required</div>
+    </div>
+    <div class="form-group">
+      <label>Phone</label>
+      <input type="text" class="form-control" ngControl="phone" #phone="ngForm" [(ngModel)]="customer.phone" required>
+      <div class="alert alert-danger" [hidden]="phone.valid">Country is required</div>
+    </div>
+    
+    <button class="btn btn-default" (click)="onCancel($event)">Cancel</button>&nbsp;&nbsp;
+    <button type="submit" class="btn btn-success" [disabled]="!customerForm.form.valid">Update</button>
+  </form>
+</div>
