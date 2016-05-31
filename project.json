@@ -42,7 +42,10 @@
 
   "buildOptions": {
     "emitEntryPoint": true,
-    "preserveCompilationContext": true
+    "preserveCompilationContext": true,
+    "compile": {
+        "exclude": ["angular-dev","wwwroot"]
+    }
   },
 
   "runtimeOptions": {
