@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using angular2_asp.Models;
 
@@ -13,9 +12,9 @@ namespace angular2_asp.Controllers
         }
     
         [HttpGet]        
-        public IEnumerable<Customer> GetAll()
+        public IActionResult GetAll()
         {            
-            return Customers.GetAll();
+            return new ObjectResult(Customers.GetAll());
         }
         
         [HttpGet("{id}", Name = "GetCustomer")]
@@ -27,6 +26,14 @@ namespace angular2_asp.Controllers
                 return NotFound();
             }
             return new ObjectResult(item);
+        }
+        
+        // PUT api/customer
+        [HttpPut]
+        public IActionResult Update([FromBody]Customer customer)
+        {
+            var item = Customers.Update(customer); 
+            return new ObjectResult(item);            
         }
     
     }
