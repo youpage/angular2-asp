@@ -1,0 +1,7 @@
+<div>
+    {{title}}
+</div>
+
+<dashboard-card [customers]="filteredCustomers" [hidden]="displayMode !== displayModeEnum.Card"></dashboard-card>
+
+<dashboard-grid [customers]="filteredCustomers" [hidden]="displayMode !== displayModeEnum.Grid"></dashboard-grid>
