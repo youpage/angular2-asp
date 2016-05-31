@@ -8,6 +8,6 @@ namespace angular2_asp.Models
         IEnumerable<T> GetAll();
         T Find(string key);
         bool Remove(string key);
-        void Update(T item);
+        T Update(T item);
     }
 }
