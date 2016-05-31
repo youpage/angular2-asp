@@ -13,21 +13,26 @@ namespace angular2_asp.Models
         public string CompanyName { get; set; }
         [StringLength(30)]
         public string ContactName { get; set; }
-        [StringLength(30)]
-        public string ContactTitle { get; set; }
-        [StringLength(60)]
+        [StringLength(30)]       
         public string Address { get; set; }
         [StringLength(15)]
         public string City { get; set; }
         [StringLength(15)]
-        public string Region { get; set; }
-        [StringLength(10)]
         public string PostalCode { get; set; }
         [StringLength(15)]
         public string Country { get; set; }
         [StringLength(24)]
-        public string Phone { get; set; }        
-        [StringLength(24)]
-        public string Fax { get; set; }     
+        public string Phone { get; set; }
+        
+        //I hate this but fkit
+        public void DeepCopy(Customer item){                         
+             this.CompanyName = item.CompanyName;
+             this.ContactName = item.ContactName;
+             this.Address = item.Address;
+             this.City = item.City;
+             this.PostalCode = item.PostalCode;
+             this.Country = item.Country;
+             this.Phone = item.Phone; 
+        }
     }
 }
